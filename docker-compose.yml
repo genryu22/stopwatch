@@ -3,8 +3,10 @@ services:
   react-scripts:
     build:
       context: '.'
+      # target: deploy
+      target: install_package
     ports:
       - 3000:3000
     volumes:
-      - ./src:/app/src
-      - ./public:/app/public
+      - ./src:/timer_app/src
+      - ./public:/timer_app/public
