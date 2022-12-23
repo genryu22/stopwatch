@@ -1,0 +1,10 @@
+version: '3'
+services:
+  react-scripts:
+    build:
+      context: '.'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
