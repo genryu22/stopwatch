@@ -12,7 +12,11 @@ Open http://localhost:3000/stopwatch to view it in the browser.
 
 ## デプロイ
 
-### docker-compose.yml
+https://genryu22.github.io/stopwatch/ に自動デプロイされる。
+
+### 手動でデプロイする場合
+
+#### docker-compose.yml
 ```
 version: '3'
 services:
@@ -28,4 +32,4 @@ services:
       - ./public:/timer_app/public
 ```
 
-デプロイ時はビルドターゲットを deploy にする。
+docker-compose.yml内のビルドターゲット指定を deploy にする。
