@@ -1,11 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+https://genryu22.github.io/stopwatch/
+
 ## 開発
 
 `docker-compose up -d --build`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open http://localhost:3000/stopwatch to view it in the browser.
 
 
 ## デプロイ

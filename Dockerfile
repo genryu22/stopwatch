@@ -20,10 +20,6 @@ COPY ./public /timer_app/public
 
 RUN npm run build
 
-FROM joseluisq/static-web-server AS deploy
+FROM nginx AS deploy
 
-COPY --from=builder /timer_app/build /timer_app_deploy
-
-EXPOSE 80
-
-CMD [ "--port", "80", "--root", "/timer_app_deploy" ]
+COPY --from=builder /timer_app/build /usr/share/nginx/html/stopwatch
