@@ -6,7 +6,7 @@ services:
       # target: deploy
       target: install_package
     ports:
-      - 3000:3000
+      - 3000:80
     volumes:
       - ./src:/timer_app/src
       - ./public:/timer_app/public
