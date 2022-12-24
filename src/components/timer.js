@@ -15,10 +15,10 @@ const Timer = (props) => {
 		return () => {
 			document.onkeypress = null
 		}
-	}, [props.running])
+	}, [props, props.running])
 
-	const [ fontstyle, ref ] = useFontSize()
-	const [ heightstyle, buttonref ] = useHeight(0.3)
+	const [fontstyle, ref] = useFontSize()
+	const [heightstyle, buttonref] = useHeight(0.3)
 
 	let time = props.time
 	let values = []
@@ -36,23 +36,23 @@ const Timer = (props) => {
 					<span key={index}>{(index > 0 ? ':' : '') + zeroPadding(value)}</span>
 				))}
 			</div>
-			<button ref={buttonref} onClick={props.reset} style={{...fontstyle(0.06), ...heightstyle}}>reset</button>
+			<button ref={buttonref} onClick={props.reset} style={{ ...fontstyle(0.06), ...heightstyle }}>reset</button>
 			{props.running ?
-				(<button onClick={props.stop} style={{...fontstyle(0.06), ...heightstyle}}>stop</button>):
-				(<button onClick={props.start} style={{...fontstyle(0.06), ...heightstyle}}>start</button>)}
+				(<button onClick={props.stop} style={{ ...fontstyle(0.06), ...heightstyle }}>stop</button>) :
+				(<button onClick={props.start} style={{ ...fontstyle(0.06), ...heightstyle }}>start</button>)}
 		</div>
 	)
 }
 
 function useSize() {
-	const [size, setSize] = React.useState({width: 0, height: 0})
+	const [size, setSize] = React.useState({ width: 0, height: 0 })
 	const ref = React.useCallback(node => {
 		if (node !== null) {
 			const rect = node.getBoundingClientRect()
-			setSize({width: rect.width, height: rect.height})
+			setSize({ width: rect.width, height: rect.height })
 			window.addEventListener('resize', () => {
 				const rect = node.getBoundingClientRect()
-				setSize({width: rect.width, height: rect.height})
+				setSize({ width: rect.width, height: rect.height })
 			})
 		}
 	}, []);
@@ -88,20 +88,20 @@ function padding(a, b) {
 	return result
 }
 
-function zeroPadding(value, digit=2) {
+function zeroPadding(value, digit = 2) {
 	return padding('00'.split(''), String(value).split('')).join('')
 }
 
 function mapStateToProps(state) {
 	return {
 		time: state.time,
-		running: state.running 
+		running: state.running
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		init: () => dispatch({ type: 'INIT_TIME'}),
+		init: () => dispatch({ type: 'INIT_TIME' }),
 		reset: () => dispatch({ type: 'RESET' }),
 		start: () => dispatch({ type: 'START' }),
 		stop: () => dispatch({ type: 'STOP' }),
